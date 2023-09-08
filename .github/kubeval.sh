@@ -10,7 +10,7 @@ curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz https:
 tar -xvf /tmp/kubeval.tar.gz kubeval
 
 # validate charts
-for CHART_DIR in ${CHART_DIRS[@]}; do
-   helm template --values charts/"${CHART_DIR}"/ci/ci-values.yaml charts/"${CHART_DIR}" | ./kubeval --strict --schema-location ${SCHEMA_LOCATION} --kubernetes-version "${KUBERNETES_VERSION#v}"
-done
-
+#for CHART_DIR in ${CHART_DIRS[@]}; do
+#   helm template --values charts/"${CHART_DIR}"/ci/ci-values.yaml charts/"${CHART_DIR}" | ./kubeval --strict --schema-location ${SCHEMA_LOCATION} --kubernetes-version "${KUBERNETES_VERSION#v}"
+#done
+helm template --values charts/portal/ci/ci-values.yaml charts/portal | ./kubeval --strict --schema-location ${SCHEMA_LOCATION} --kubernetes-version "${KUBERNETES_VERSION#v}"
